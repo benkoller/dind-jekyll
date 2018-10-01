@@ -18,10 +18,13 @@ RUN apk add --update --no-cache \
     ruby-bundler \
     ruby-dev \
     gcc \
+    nodejs \
+    npm \
   && rm -rf /var/cache/apk/*
 
 RUN pip install awscli
 RUN gem update && \
     gem install jekyll -v $JEKYLL_VERSION
+RUN npm install html-minifier -g
 
 ENTRYPOINT /bin/bash
